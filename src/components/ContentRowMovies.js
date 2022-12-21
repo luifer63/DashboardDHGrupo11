@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import SmallCard from './SmallCard';
+
 
 /*  Cada set de datos es un objeto literal */
 
 /* <!-- Movies in DB --> */
 
-let moviesInDB = {
-    title: 'Movies in Data Base',
+let productsQuantity = {
+    title: 'Total de Productos',
     color: 'primary', 
     cuantity: 21,
     icon: 'fa-clipboard-list'
@@ -14,8 +15,8 @@ let moviesInDB = {
 
 /* <!-- Total awards --> */
 
-let totalAwards = {
-    title:' Total awards', 
+let categoriesQuantity = {
+    title:' Total de Categorias', 
     color:'success', 
     cuantity: '79',
     icon:'fa-award'
@@ -23,16 +24,57 @@ let totalAwards = {
 
 /* <!-- Actors quantity --> */
 
-let actorsQuantity = {
-    title:'Actors quantity' ,
+let usersQuantity = {
+    title:'Total de Usuarios' ,
     color:'warning',
     cuantity:'49',
     icon:'fa-user-check'
 }
 
-let cartProps = [moviesInDB, totalAwards, actorsQuantity];
+
+
+let cartProps = [productsQuantity, categoriesQuantity, usersQuantity];
+
 
 function ContentRowMovies(){
+const [cuantityUsers, setCuantityUsers] = useState([]);
+const [cuantityProducts, setCuantityProducts] = useState([]);
+
+useEffect( () => {
+
+    const usersFetch = async () => {
+        
+        const response = await fetch('api/users')
+        const json = await response.json()
+        if (response.ok) {
+            
+            setCuantityUsers(json.meta.total_users)
+        }
+        
+    }
+usersFetch()    
+
+}, [cuantityUsers]);
+
+useEffect( () => {
+
+    const usersFetch = async () => {
+        
+        const response = await fetch('api/products/list')
+        const json = await response.json()
+        if (response.ok) {
+            
+            setCuantityProducts(json.meta.total)
+        }
+        
+    }
+usersFetch()    
+
+}, [cuantityProducts]);
+
+usersQuantity.cuantity = cuantityUsers;
+productsQuantity.cuantity = cuantityProducts;
+
     return (
     
         <div className="row">
