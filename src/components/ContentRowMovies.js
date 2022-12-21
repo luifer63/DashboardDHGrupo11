@@ -39,6 +39,7 @@ let cartProps = [productsQuantity, categoriesQuantity, usersQuantity];
 function ContentRowMovies(){
 const [cuantityUsers, setCuantityUsers] = useState([]);
 const [cuantityProducts, setCuantityProducts] = useState([]);
+const [cuantityCategories, setCuantityCategories] = useState([]);
 
 useEffect( () => {
 
@@ -58,22 +59,24 @@ usersFetch()
 
 useEffect( () => {
 
-    const usersFetch = async () => {
+    const productsFetch = async () => {
         
         const response = await fetch('api/products/list')
         const json = await response.json()
         if (response.ok) {
             
             setCuantityProducts(json.meta.total)
+            setCuantityCategories(json.meta.categories.length)
         }
         
     }
-usersFetch()    
+productsFetch()    
 
-}, [cuantityProducts]);
+}, [cuantityProducts, cuantityCategories]);
 
 usersQuantity.cuantity = cuantityUsers;
 productsQuantity.cuantity = cuantityProducts;
+categoriesQuantity.cuantity = cuantityCategories;
 
     return (
     

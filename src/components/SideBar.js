@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../assets/images/logo-DH.png';
+//import image from '../assets/images/logo-DH.png';
 import { Link , Routes, Route} from 'react-router-dom';
 import ContentWrapper from './ContentWrapper';
 import GenresInDb from './GenresInDb';
@@ -41,7 +41,7 @@ function SideBar(){
                 <li className="nav-item">
                     <Link className="nav-link collapsed" to="/genres">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Genres</span>
+                        <span>Categorias</span>
                     </Link>
                 </li>
 
@@ -49,14 +49,14 @@ function SideBar(){
                 <li className="nav-item">
                     <Link className="nav-link" to="/lastMovie">
                         <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Last Movie</span></Link>
+                        <span>Último Produto</span></Link>
                 </li>
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item">
                     <Link className="nav-link" to="/rowMovies">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Row Movies</span></Link>
+                        <span>Último Usuario</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
