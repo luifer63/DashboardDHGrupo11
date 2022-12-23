@@ -5,21 +5,19 @@ function GenresInDb() {
 
   const [categories, setCategories] = useState([]);
 
-  useEffect( () => {
-
-    const categoriesFetch = async () => {
-        
-        const response = await fetch('api/products/categories')
-        const json = await response.json()
-        if (response.ok) {
-            
-          setCategories(json.data)
+  useEffect(() => {
+    fetch('api/products/categories',
+      {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
         }
-        
-    }
-    categoriesFetch()    
+      })
+      .then(response => response.json())
+      .then(data => setCategories(data.data))
+      .catch(err => console.log(err))
+  }, [])
 
-}, [categories]);
 
 
   return (

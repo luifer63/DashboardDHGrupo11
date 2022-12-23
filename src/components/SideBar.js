@@ -6,6 +6,7 @@ import GenresInDb from './GenresInDb';
 import LastMovieInDb from './LastMovieInDb';
 import ContentRowMovies from './ContentRowMovies';
 import NotFound from './NotFound'
+import LastUserInDb from './LastUserInDb';
 
 function SideBar(){
     return(
@@ -54,7 +55,7 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/rowMovies">
+                    <Link className="nav-link" to="/lastUser">
                         <i className="fas fa-fw fa-table"></i>
                         <span>Último Usuario</span></Link>
                 </li>
@@ -68,7 +69,7 @@ function SideBar(){
                 <Route path = "/" element={ <ContentWrapper/> } />
                 <Route path = "/genres" element={ <GenresInDb/> } />
                 <Route path = "/lastMovie" element={ <LastMovieInDb/> } />
-                <Route path = "/rowMovies" element={ <ContentRowMovies/> } />
+                <Route path = "/lastUser" element={ <LastUserInDb/> } />
                 <Route path = "*" element={ <NotFound/> } />
             </Routes>
             
