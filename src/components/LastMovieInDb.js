@@ -2,7 +2,7 @@ import React ,{ useState, useEffect, useRef } from 'react';
 import image from '../assets/images/logo-DH.png';
 import path from 'path';
 import NotFound from './NotFound';
-const ruta = 'C:/Users/lgomez/Documents/PERSONALES/CURSO_DH/REPOSITORIO_CODIGO/WIREFRAMES/ACTUALIZADO/grupo_11_tienda_online/public/images/product-images/';
+const ruta = './images/product-images/'
 
 
 
