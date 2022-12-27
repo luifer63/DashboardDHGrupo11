@@ -66,13 +66,29 @@ useEffect( () => {
         if (response.ok) {
             
             setCuantityProducts(json.meta.total)
-            setCuantityCategories(json.meta.categories.length)
         }
         
     }
 productsFetch()    
 
-}, [cuantityProducts, cuantityCategories]);
+}, [cuantityProducts]);
+
+useEffect( () => {
+
+    const categoriesFetch = async () => {
+        
+        const response = await fetch('api/products/categories')
+        const json = await response.json()
+        if (response.ok) {
+            
+            setCuantityCategories(json.meta.total)
+        }
+        
+    }
+categoriesFetch()    
+
+}, [cuantityCategories]);
+
 
 usersQuantity.cuantity = cuantityUsers;
 productsQuantity.cuantity = cuantityProducts;
