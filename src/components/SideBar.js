@@ -4,7 +4,6 @@ import { Link , Routes, Route} from 'react-router-dom';
 import ContentWrapper from './ContentWrapper';
 import GenresInDb from './GenresInDb';
 import LastMovieInDb from './LastMovieInDb';
-import ContentRowMovies from './ContentRowMovies';
 import NotFound from './NotFound'
 import LastUserInDb from './LastUserInDb';
 

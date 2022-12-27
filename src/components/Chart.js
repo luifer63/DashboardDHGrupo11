@@ -1,5 +1,7 @@
-import React from 'react';
+import React ,{useState, useEffect, useRef} from 'react';
 import ChartRow from './ChartRow';
+
+
 
 let tableRowsData = [
     {
@@ -21,6 +23,29 @@ let tableRowsData = [
 
 
 function Chart (){
+
+    const [catKey, setCatKey] = useState(0);
+
+    useEffect(() => {
+        checkCategory(catKey)
+        
+      }, [catKey])
+
+    let checkCategory = ((id) =>{
+        console.log("mi ID ", id)
+        fetch(`api/products/categories/${id}`,
+          {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+            }
+          })
+          .then(response => response.json())
+          .then(data => setCatKey(data))
+          .catch(err => console.log(err))
+
+      })
+
     return (
         /* <!-- DataTales Example --> */
         <div className="card shadow mb-4">
@@ -47,6 +72,7 @@ function Chart (){
                         </tfoot>
                         <tbody>
                             {
+                                
                             tableRowsData.map( ( row , i) => {
                                 return <ChartRow { ...row} key={i}/>
                             })

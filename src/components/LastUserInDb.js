@@ -1,6 +1,4 @@
 import React ,{ useState, useEffect, useRef } from 'react';
-import image from '../assets/images/logo-DH.png';
-import path from 'path';
 import NotFound from './NotFound';
 const ruta = './images/users/';
 
@@ -28,7 +26,7 @@ function LastUserInDb(){
     }
   
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(()=> {
+    useEffect(()=> {
     console.log(dataFetchedRef.current);
      if (dataFetchedRef.current) 
          return;
@@ -58,9 +56,9 @@ function LastUserInDb(){
                         </div>
                     <div className="m-0 font-weight-bold text-gray-800">
                         <p>Nombre: {userSt.name}</p>
-                        <p>Apellido: {userSt.description}</p>
+                        <p>Apellido: {userSt.lastName}</p>
                         <p>Teléfono: {userSt.phone}</p>
-                        <p>Email: {userSt.phone}</p>                        
+                        <p>Email: {userSt.email}</p>                        
                         <p>Direccion: {userSt.address}</p>             
                     </div>
                         
@@ -75,11 +73,7 @@ function LastUserInDb(){
          return(<NotFound />)         
      }
     
-}
-    
-    
-   
-    
+}    
 
 
 export default LastUserInDb;

@@ -1,9 +1,13 @@
-import React ,{useState, useEffect} from "react";
+import React ,{useState, useEffect, useRef} from "react";
+import Chart from './Chart'
 
 
-function GenresInDb() {
+function GenresInDb({passCategory}) {
 
   const [categories, setCategories] = useState([]);
+  const [catKey, setCatKey] = useState(0);
+  let categoryRef = useRef([]);
+
 
   useEffect(() => {
     fetch('api/products/categories',
@@ -17,6 +21,16 @@ function GenresInDb() {
       .then(data => setCategories(data.data))
       .catch(err => console.log(err))
   }, [])
+
+  // current document.querySelector("#content > div > dnpiv:nth-child(3) > div:nth-child(3) > div > div.card-body > div > div:nth-child(2) > div > button")
+
+  passCategory = (event) => {
+   
+    event.preventDefault()
+    let option = event.target.dataset.key;
+    let keySel = option;
+    setCatKey(keySel);
+  }
 
 
 
@@ -32,21 +46,23 @@ function GenresInDb() {
           <div className="row">
 
             {
-              categories.map( category => {
+              categories.map( (category)=> {
                 return ( 
                       <div className="col-lg-6 mb-4">
                             <div className="card bg-dark text-white shadow">
-                              <div className="card-body" key={category.id}>{category.name}</div>
+                              <button className="card-body hola" data-key = {category.id} ref={categoryRef} Key={category.id} onClick={passCategory}>{category.name}</button>
+                             
                             </div>
+                            
                       </div>
+                      
                       )
-
               })
-            }
-            
+            }            
           </div>
         </div>
       </div>
+      <Chart catKey = {catKey}/>
     </div>
   );
 }

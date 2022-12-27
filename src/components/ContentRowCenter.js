@@ -3,7 +3,7 @@ import LastMovieInDb from './LastMovieInDb';
 import LastUserInDb from './LastUserInDb';
 import GenresInDb from './GenresInDb';
 
-function ContentRowCenter(){
+function ContentRowCenter(props){
     return (
         <div className="row">
             
@@ -14,7 +14,8 @@ function ContentRowCenter(){
 
             {/*<!-- Genres in DB -->*/}
             <GenresInDb />
-
+           
+            
         </div>
     )
 }
