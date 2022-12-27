@@ -1,6 +1,5 @@
 import React ,{ useState, useEffect, useRef } from 'react';
 import image from '../assets/images/logo-DH.png';
-import path from 'path';
 import NotFound from './NotFound';
 const ruta = './images/users/';
 
