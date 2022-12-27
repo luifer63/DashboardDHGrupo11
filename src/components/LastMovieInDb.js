@@ -13,7 +13,7 @@ function LastMovieInDb(){
 
   let fetchData = () => {
         console.log('llamando API');
-        fetch('api/products/detail/609',
+        fetch('api/products/last',
             {
                 method: 'GET',
                 headers: {
