@@ -1,5 +1,4 @@
 import React ,{ useState, useEffect, useRef } from 'react';
-
 import NotFound from './NotFound';
 const ruta = './images/users/';
 
