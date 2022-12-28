@@ -1,6 +1,5 @@
 import React ,{ useState, useEffect, useRef } from 'react';
-import image from '../assets/images/logo-DH.png';
-import path from 'path';
+
 import NotFound from './NotFound';
 const ruta = './images/product-images/'
 
@@ -13,7 +12,7 @@ function LastMovieInDb(){
 
   let fetchData = () => {
         console.log('llamando API');
-        fetch('api/products/last',
+        fetch('api/products/detail/609',
             {
                 method: 'GET',
                 headers: {
@@ -40,8 +39,8 @@ function LastMovieInDb(){
     console.log("mi producto ", productSt);
 
     
-        let imagenes = productSt && productSt?.images.map(imagen => imagen)
-        let testImg = imagenes && path.join(ruta, imagenes[0].name)
+        let imagenes = productSt && productSt?.images.map(imagen => imagen);
+        let testImg = imagenes && ruta +  imagenes[0].name;
         console.log("mi ruta",testImg);
         
         

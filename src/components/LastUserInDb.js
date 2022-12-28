@@ -1,6 +1,5 @@
 import React ,{ useState, useEffect, useRef } from 'react';
-import image from '../assets/images/logo-DH.png';
-import path from 'path';
+
 import NotFound from './NotFound';
 const ruta = './images/users/';
 
@@ -58,9 +57,9 @@ function LastUserInDb(){
                         </div>
                     <div className="m-0 font-weight-bold text-gray-800">
                         <p>Nombre: {userSt.name}</p>
-                        <p>Apellido: {userSt.description}</p>
+                        <p>Apellido: {userSt.lastname}</p>
                         <p>Teléfono: {userSt.phone}</p>
-                        <p>Email: {userSt.phone}</p>                        
+                        <p>Email: {userSt.email}</p>                        
                         <p>Direccion: {userSt.address}</p>             
                     </div>
                         
