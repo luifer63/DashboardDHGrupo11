@@ -36,7 +36,7 @@ let usersQuantity = {
 let cartProps = [productsQuantity, categoriesQuantity, usersQuantity];
 
 
-function ContentRowMovies(){
+function PanelesSimples(){
 const [cuantityUsers, setCuantityUsers] = useState([]);
 const [cuantityProducts, setCuantityProducts] = useState([]);
 const [cuantityCategories, setCuantityCategories] = useState([]);
@@ -108,4 +108,4 @@ categoriesQuantity.cuantity = cuantityCategories;
     )
 }
 
-export default ContentRowMovies;
+export default PanelesSimples;

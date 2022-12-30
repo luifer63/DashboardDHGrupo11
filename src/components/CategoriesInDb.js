@@ -1,7 +1,7 @@
 import React ,{useState, useEffect} from "react";
 
 
-function GenresInDb() {
+function CategoriesInDb() {
 
   const [categories, setCategories] = useState([]);
 
@@ -37,6 +37,8 @@ function GenresInDb() {
                       <div className="col-lg-6 mb-4">
                             <div className="card bg-dark text-white shadow">
                               <div className="card-body" key={category.id}>{category.name}</div>
+                              {/* AGREGAR CANTIDAD DE PRODUCTOS DE CADA UNA */}
+
                             </div>
                       </div>
                       )
@@ -51,4 +53,4 @@ function GenresInDb() {
   );
 }
 
-export default GenresInDb;
+export default CategoriesInDb;
