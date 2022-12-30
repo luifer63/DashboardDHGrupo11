@@ -1,6 +1,7 @@
 import React ,{ useState, useEffect, useRef } from 'react';
 import NotFound from './NotFound';
 const ruta = './images/users/';
+const avatar = 'avatar.png'
 
 
 
@@ -35,11 +36,18 @@ function LastUserInDb(){
     fetchData();                
     },[])
 
+        let testImg = '';
+
+        try {
+            let imagenes = userSt && userSt.profile_photo;
+            testImg = ruta + imagenes; 
+            console.log("mi ruta user",testImg);            
+        } catch (error) {
+            testImg = ruta + avatar;            
+        }
 
     
-        let imagenes = userSt && userSt.profile_photo;
-        let testImg = ruta + imagenes; 
-        console.log("mi ruta user",testImg);
+        
         
         
      try {

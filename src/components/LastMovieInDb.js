@@ -2,17 +2,17 @@ import React ,{ useState, useEffect, useRef } from 'react';
 
 import NotFound from './NotFound';
 const ruta = './images/product-images/'
-
+const noImage = 'no_image.png'
 
 
 function LastMovieInDb(){
 
-  const [productSt, setProduct] = useState();
+  const [productSt, setProductSt] = useState();
   const dataFetchedRef = useRef(false);
 
   let fetchData = () => {
         console.log('llamando API');
-        fetch('api/products/detail/609',
+        fetch('api/products/last',
             {
                 method: 'GET',
                 headers: {
@@ -21,8 +21,8 @@ function LastMovieInDb(){
             })
             .then(response => response.json())
             .then(data => {
-                console.log("respuesta API");
-                setProduct(data.data)})
+                console.log("respuesta API", data);
+                setProductSt(data.data)})
             .catch(err => console.log(err))
     }
   
@@ -37,11 +37,17 @@ function LastMovieInDb(){
     },[])
 
     console.log("mi producto ", productSt);
+    let testImg = '';
 
-    
+    try {
         let imagenes = productSt && productSt?.images.map(imagen => imagen);
-        let testImg = imagenes && ruta +  imagenes[0].name;
+        testImg = imagenes && ruta +  imagenes[0].name;
         console.log("mi ruta",testImg);
+        
+    } catch (error) {
+        testImg = ruta + noImage        
+    }
+        
         
         
      try {
