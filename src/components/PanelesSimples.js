@@ -4,7 +4,7 @@ import SmallCard from './SmallCard';
 
 /*  Cada set de datos es un objeto literal */
 
-/* <!-- Movies in DB --> */
+/* <!-- PRODUCTOS --> */
 
 let productsQuantity = {
     title: 'Total de Productos',
@@ -13,7 +13,7 @@ let productsQuantity = {
     icon: 'fa-clipboard-list'
 }
 
-/* <!-- Total awards --> */
+/* <!-- CATEGORIAS --> */
 
 let categoriesQuantity = {
     title:' Total de Categorias', 
@@ -22,7 +22,7 @@ let categoriesQuantity = {
     icon:'fa-award'
 }
 
-/* <!-- Actors quantity --> */
+/* <!-- USUARIOS --> */
 
 let usersQuantity = {
     title:'Total de Usuarios' ,
@@ -31,12 +31,9 @@ let usersQuantity = {
     icon:'fa-user-check'
 }
 
-
-
 let cartProps = [productsQuantity, categoriesQuantity, usersQuantity];
 
-
-function ContentRowMovies(){
+function PanelesSimples(){
 const [cuantityUsers, setCuantityUsers] = useState([]);
 const [cuantityProducts, setCuantityProducts] = useState([]);
 const [cuantityCategories, setCuantityCategories] = useState([]);
@@ -98,9 +95,9 @@ categoriesQuantity.cuantity = cuantityCategories;
     
         <div className="row">
             
-            {cartProps.map( (movie, i) => {
+            {cartProps.map( (producto, i) => {
 
-                return <SmallCard {...movie} key={i}/>
+                return <SmallCard {...producto} key={i}/>
             
             })}
 
@@ -108,4 +105,4 @@ categoriesQuantity.cuantity = cuantityCategories;
     )
 }
 
-export default ContentRowMovies;
+export default PanelesSimples;

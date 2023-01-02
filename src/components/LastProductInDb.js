@@ -5,7 +5,7 @@ const ruta = './images/product-images/'
 const noImage = 'no_image.png'
 
 
-function LastMovieInDb(){
+function LastProductInDb(){
 
   const [productSt, setProductSt] = useState();
   const dataFetchedRef = useRef(false);
@@ -88,4 +88,4 @@ function LastMovieInDb(){
     
 
 
-export default LastMovieInDb;
+export default LastProductInDb;

@@ -1,15 +1,17 @@
 import React from 'react';
-//import image from '../assets/images/logo-DH.png';
-import { Link , Routes, Route} from 'react-router-dom';
-import ContentWrapper from './ContentWrapper';
-import GenresInDb from './GenresInDb';
-import LastMovieInDb from './LastMovieInDb';
-//import ContentRowMovies from './ContentRowMovies';
-import NotFound from './NotFound'
+import { Link, Routes, Route } from 'react-router-dom';
+import ContentWrapper from './Content-Wrapper';
+import CategoriesInDb from './CategoriesInDb';
+import LastProductInDb from './LastProductInDb';
 import LastUserInDb from './LastUserInDb';
+import NotFound from './NotFound'
 
-function SideBar(){
-    return(
+
+
+
+
+function SideBar() {
+    return (
         <React.Fragment>
             {/*<!-- Sidebar -->*/}
             <ul className="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -23,7 +25,7 @@ function SideBar(){
                 </Link>
 
                 {/*<!-- Divider -->*/}
-                <hr className="sidebar-divider my-0"/>
+                <hr className="sidebar-divider my-0" />
 
                 {/*<!-- Nav Item - Dashboard -->*/}
                 <li className="nav-item active">
@@ -33,14 +35,14 @@ function SideBar(){
                 </li>
 
                 {/*<!-- Divider -->*/}
-                <hr className="sidebar-divider"/>
+                <hr className="sidebar-divider" />
 
                 {/*<!-- Heading -->*/}
                 <div className="sidebar-heading">Actions</div>
 
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link collapsed" to="/genres">
+                    <Link className="nav-link collapsed" to="/categories">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Categorias</span>
                     </Link>
@@ -48,7 +50,7 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Charts -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/lastMovie">
+                    <Link className="nav-link" to="/lastProduct">
                         <i className="fas fa-fw fa-chart-area"></i>
                         <span>Último Produto</span></Link>
                 </li>
@@ -61,18 +63,17 @@ function SideBar(){
                 </li>
 
                 {/*<!-- Divider -->*/}
-                <hr className="sidebar-divider d-none d-md-block"/>
+                <hr className="sidebar-divider d-none d-md-block" />
             </ul>
             {/*<!-- End of Sidebar -->*/}
 
             <Routes>
-                <Route path = "/" element={ <ContentWrapper/> } />
-                <Route path = "/genres" element={ <GenresInDb/> } />
-                <Route path = "/lastMovie" element={ <LastMovieInDb/> } />
-                <Route path = "/lastUser" element={ <LastUserInDb/> } />
-                <Route path = "*" element={ <NotFound/> } />
+                <Route path="/" element={<ContentWrapper />} />
+                <Route path="/categories" element={<CategoriesInDb />} />
+                <Route path="/lastProduct" element={<LastProductInDb />} />
+                <Route path="/lastUser" element={<LastUserInDb />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
-            
         </React.Fragment>
     )
 }

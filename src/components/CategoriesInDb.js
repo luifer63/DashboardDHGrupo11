@@ -1,7 +1,7 @@
 import React ,{useState, useEffect} from "react";
 
 
-function GenresInDb() {
+function CategoriesInDb() {
 
   const [categories, setCategories] = useState([]);
 
@@ -40,7 +40,6 @@ function GenresInDb() {
                             </div>
                       </div>
                       )
-
               })
             }
             
@@ -51,4 +50,4 @@ function GenresInDb() {
   );
 }
 
-export default GenresInDb;
+export default CategoriesInDb;
