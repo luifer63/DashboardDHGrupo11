@@ -1,4 +1,4 @@
-import React ,{useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect } from 'react';
 import ChartRow from './ChartRow';
 
 
@@ -8,83 +8,78 @@ let tableRowsData = [
         Title: 'Billy Elliot ',
         Length: '123',
         Rating: '5',
-        Categories: ['Drama','Comedia'],
+        Categories: ['Drama', 'Comedia'],
         Awards: 2
     },
     {
         Title: 'Alicia en el país de las maravillas',
         Length: '142',
         Rating: '4.8',
-        Categories: ['Drama','Acción','Comedia'],
+        Categories: ['Drama', 'Acción', 'Comedia'],
         Awards: 3
     },
-    
+
 ]
 
 
-function Chart (){
+function Chart(props) {
 
-    const [catKey, setCatKey] = useState(0);
+    const [dataRow, setDataRow] = useState();
 
     useEffect(() => {
-        checkCategory(catKey)
-        
-      }, [catKey])
+        checkCategory(props.catChart)
+    }, [props.catChart])
 
-    let checkCategory = ((id) =>{
-        console.log("mi ID ", id)
-        fetch(`api/products/categories/${id}`,
-          {
-            method: 'GET',
-            headers: {
-              accept: 'application/json',
-            }
-          })
-          .then(response => response.json())
-          .then(data => setCatKey(data))
-          .catch(err => console.log(err))
+    let checkCategory = ((catKey) => {
+        console.log("mi ID ", catKey)
+        fetch(`api/products/category/${catKey}`,
+            {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => setDataRow(data.data))
+            .catch(err => console.log(err))
 
-      })
+    })
+    console.log("mi data: ", dataRow);
 
-    return (
-        /* <!-- DataTales Example --> */
-        <div className="card shadow mb-4">
+    try {
+
+        return (<div className="card shadow mb-4">
             <div className="card-body">
                 <div className="table-responsive">
                     <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                         <thead>
                             <tr>
-                                <th>Título</th>
-                                <th>Duración</th>
-                                <th>Rating</th>
-                                <th>Género</th>
-                                <th>Premios</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Título</th>
-                                <th>Duración</th>
-                                <th>Rating</th>
-                                <th>Género</th>
-                                <th>Premios</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>                                
                             </tr>
                         </tfoot>
                         <tbody>
                             {
-                                
-                            tableRowsData.map( ( row , i) => {
-                                return <ChartRow { ...row} key={i}/>
-                            })
+                                dataRow?.map((row, i) => {
+                                    return <ChartRow {...row} key={i} />
+                                })
                             }
 
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-
-    )
+        </div>)
+    } catch (error) {
+        return <div className='card-body'>Cargando...</div>
+    }
 }
-
 export default Chart;

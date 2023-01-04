@@ -2,23 +2,20 @@ import React from 'react';
 
 
 function ChartRow(props){
-    return (
-                <tr>
-                    <td>{props.Title}</td>
-                    <td>{props.Length}</td>
-                    <td>{props.Rating}</td>
-                    <td>
-                        <ul>
-                            {props.Categories.map( (category,i) => 
-                                <li key={`category ${i}`}>{category}</li>
-                            )}
-                        </ul>
-                    </td>
-                    <td>{props.Awards}</td>
-                </tr>
-            )
-    }
-    
-        
+    console.log("mi props:", props);
+    try {
+        return (
+            <tr>
+                <td>{props.id}</td>
+                <td>{props.name}</td>
+                <td>{props.description}</td>                                
+            </tr>
+        )
 
+        
+    } catch (error) {
+        console.log("mi error:", error);
+        return <div className='card-body'>Cargando...</div>
+    }
+}
 export default ChartRow;

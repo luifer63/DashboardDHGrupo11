@@ -5,8 +5,11 @@ import Chart from './Chart'
 function GenresInDb({passCategory}) {
 
   const [categories, setCategories] = useState([]);
-  const [catKey, setCatKey] = useState(0);
-  let categoryRef = useRef([]);
+  const [catKey, setCatKey] = useState(1);
+  const categoryRef = useRef([]);
+ 
+
+ 
 
 
   useEffect(() => {
@@ -27,9 +30,10 @@ function GenresInDb({passCategory}) {
   passCategory = (event) => {
    
     event.preventDefault()
-    let option = event.target.dataset.key;
-    let keySel = option;
-    setCatKey(keySel);
+    let option = event.nativeEvent.path[0].attributes.key.value
+    console.log(event.nativeEvent.path[0].attributes.key.value);
+    //let keySel = option;
+    setCatKey(option);
   }
 
 
@@ -46,11 +50,11 @@ function GenresInDb({passCategory}) {
           <div className="row">
 
             {
-              categories.map( (category)=> {
+              categories.map( (category, index)=> {
                 return ( 
                       <div className="col-lg-6 mb-4">
                             <div className="card bg-dark text-white shadow">
-                              <button className="card-body hola" data-key = {category.id} ref={categoryRef} Key={category.id} onClick={passCategory}>{category.name}</button>
+                              <button className="card-body hola" ref={e => categoryRef.current[category.id]=e} Key={category.id} onClick={passCategory}>{category.name}</button>
                              
                             </div>
                             
@@ -62,7 +66,8 @@ function GenresInDb({passCategory}) {
           </div>
         </div>
       </div>
-      <Chart catKey = {catKey}/>
+      {console.log("Categoria chart ", catKey)}
+      <Chart catChart = {catKey}/>
     </div>
   );
 }

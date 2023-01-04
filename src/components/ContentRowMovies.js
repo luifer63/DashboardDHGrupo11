@@ -66,7 +66,7 @@ useEffect( () => {
         if (response.ok) {
             
             setCuantityProducts(json.meta.total)
-            setCuantityCategories(json.meta.categories.length)
+            //setCuantityCategories(json.meta.categories.length)
         }
         
     }
